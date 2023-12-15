@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ExampleProject.Model.CompanyModel>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 800px;
+        }
+
+        .table-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <title>Company Information Table</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="table-title">Company Information</div>
+        <table class="table">
+            <thead>
+                <tr >
+                    <th>Sr No</th>
+                    <th>Company Name</th>
+                    <th>Email</th>
+                    <th>Western Number</th>
+                    <th>GST Number</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                @foreach(var companyList in Model)
+                {
+                <tr>
+                    <td class="text-center bg-dark text-white">@companyList.Id</td>
+                    <td>@companyList.CompanyName</td>
+                    <td>@companyList.Email</td>
+                    <td>@companyList.WesternNumber</td>
+                    <td>@companyList.GstNumber</td>
+                </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

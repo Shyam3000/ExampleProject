@@ -1,0 +1,36 @@
+﻿@model ExampleProject.Model.SignUpModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+	<link href="~/css/loginstylesheet.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="Email">Email:</label>
+                    <input asp-for="Email" class="form-control" id="username" placeholder="Enter your username">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" for="password">Password:</label>
+                    <input asp-for="Password" class="form-control" id="password" placeholder="Enter your password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConformPassword" for="password">Password:</label>
+                    <input asp-for="ConformPassword" class="form-control" id="password" placeholder="Enter your password">
+                    <span asp-validation-for="ConformPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">SignUp</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

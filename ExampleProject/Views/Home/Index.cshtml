@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<link href="~/css/dashboardstylesheet.css" rel="stylesheet" />
+    <title>Responsive Dashboard</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+           
+            <div class="col-12 top-section">
+              
+                <div class="left-section">
+                    <button class="btn btn-secondary" onclick="toggleLeftPanel()">Toggle Left Panel</button>
+                </div>
+               
+                <div class="center-section">
+                    <h1>&nbsp;&nbsp;&nbsp;&nbsp; Sharma Company</h1>
+                </div>
+                
+                <div class="right-section">
+                    <form asp-action="SignOut" asp-controller="Home" method="post">
+                        <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                        <input type="submit" class="btn btn-primary" value="SignOut" name="SignOut">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row flud-size">
+            
+            <div class="col-md-3 col-sm-12 left-panel d-none" id="leftPanel">
+                <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCompany">
+                        Company
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCompany">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" id="companyLink">Company</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDispositer">
+                        Dispositer
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarDispositer">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link"  id="dispatcherLink">Dispatcher</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            
+            <div class="col-md-9 col-sm-12 right-panel" id="rightPanel">
+                <iframe id="contentFrame" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    
+    <script>
+        document.getElementById('companyLink').addEventListener('click', function () {
+            loadContent('Pages/Company');
+        });
+
+        document.getElementById('dispatcherLink').addEventListener('click', function () {
+            loadContent('Pages/Dispatcher');
+        });
+        function toggleLeftPanel() {
+            var leftPanel = document.getElementById('leftPanel');
+            var rightPanel = document.getElementById('rightPanel');
+
+            
+            leftPanel.classList.toggle('d-none');
+
+          
+            if (leftPanel.classList.contains('d-none')) {
+                rightPanel.classList.remove('col-md-9');
+                rightPanel.classList.add('col-md-12');
+            } else {
+                rightPanel.classList.remove('col-md-12');
+                rightPanel.classList.add('col-md-9');
+            }
+        }
+        function loadContent(page) {
+            var contentFrame = document.getElementById('contentFrame');
+            contentFrame.src = page;
+        }
+        window.onload = function () {
+            loadContent('company.html');
+        };
+       
+        document.getElementById('leftPanel').classList.add('d-none');
+        document.getElementById('rightPanel').classList.remove('col-md-9');
+        document.getElementById('rightPanel').classList.add('col-md-12');
+
+
+    </script>
+</body>
+</html>
